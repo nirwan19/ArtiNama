@@ -9,8 +9,8 @@ Modified @ Farzain - zFz
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 
-$channelAccessToken = 'L6ppUhvXPvaIr1w/roEyT0tPfbM4iD22TQ6PGWbk1P+t5Q0bxgI8uwQZEHfM3XIs+0g4y0EMoL7eJIpleTWLVsE6LlmKae9l5LgAjTKpFINSspaRr9Gj62XkrYtZigcN22AneDD41G+KBH5gvOemRgdB04t89/1O/w1cDnyilFU='; //sesuaikan 
-$channelSecret = 'e5ce69331dc64e90d1ee5f55f24f272d';//sesuaikan
+$channelAccessToken = '8L/UrB78OrtX2IZr6yddOsr7H53PcOfIgkVBZw6VYRy+euxGzVCWmczvm4JGeh18o97IU0veeB/1haAZmJwH3kD32FXRAUd+ico1bzbgbsg6itLh4M+XSEg2/XnfcZxXO/durhsRNqhJq3FTjMHC7AdB04t89/1O/w1cDnyilFU='; //sesuaikan 
+$channelSecret = '204339c9f13ced412e42fcce0d40ea75';//sesuaikan
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
@@ -67,26 +67,17 @@ if ($command <> 'HALAL' || $command <> 'HALO'|| $command <> 'HAI'){
 
 
 #-------------------------[Function]-------------------------#
-function muiHalal($keyword) {
+function ArtiNama($keyword) {
     $uri = "https://sites.google.com/macros/exec?service=AKfycbx_-gZbLP7Z2gGxehXhWMWDAAQsTp3e3bmpTBiaLuzSDQSbIFWD&menu=nama_produk&query=" . $keyword;
 // identifikasi mata uang
 
     $response = Unirest\Request::get("$uri");
 
     $json = json_decode($response->raw_body, true);
-	if ($json['status'] == 'success'){
- 	$result = "Halo Gan, berikut produk yg ditemukan :";
-		for ($i=0; $i<10; $i++){
-		$result .= "\nNama Produk : ";
-		$result .= $json['data'][$i]['title'];
-		$result .= "\nNo. Sertifikat : ";
-		$result .= $json['data'][$i]['nomor_sertifikat'];
-		$result .= "\nProdusen : ";
-		$result .= $json['data'][$i]['produsen'];
-		$result .= "\nBerlaku Sampai : ";
-		$result .= $json['data'][$i]['berlaku_hingga'];
+	if ($json['status'] == '200'){
+ 	$result = "Berdasarkan Database Saya, Nama ".$keyword." memiliki makna :";
 		$result .= "\n";
-		}
+		$result .= $json['result'];
 	}
 
     return $result;
@@ -128,9 +119,9 @@ if ($command == 'HALO' || $command == 'HAI' || $command == 'HALO,' || $command =
 }
 //pesan bergambar
 if($message['type']=='text') {
-	if ($command == 'HALAL') {
+	if ($command == 'NAMA') {
 
-        $result = muiHalal($options);
+        $result = ArtiNama($options);
         $balas = array(
             'replyToken' => $replyToken,
             'messages' => array(
