@@ -68,7 +68,7 @@ if ($command <> 'HALAL' || $command <> 'HALO'|| $command <> 'HAI'){
 
 #-------------------------[Function]-------------------------#
 function ArtiNama($keyword) {
-    $uri = "https://sites.google.com/macros/exec?service=AKfycbx_-gZbLP7Z2gGxehXhWMWDAAQsTp3e3bmpTBiaLuzSDQSbIFWD&menu=nama_produk&query=" . $keyword;
+    $uri = "https://rest.farzain.com/api/nama.php?q=".$keyword."&apikey=bvmnHB0U9yi78rEymZxch8Sue";
 // identifikasi mata uang
 
     $response = Unirest\Request::get("$uri");
