@@ -52,7 +52,7 @@ if ($kata1 != "HALAL" or $kata1 != "HELP" or $kata1 != "HALO" or $kata1 != "HALO
         	);
 }
 */
-if ($command <> 'HALAL' || $command <> 'HALO'|| $command <> 'HAI'){
+if ($command <> 'NAMA' || $command <> 'HALO'|| $command <> 'HAI'){
 		$balas = array(
             	'replyToken' => $replyToken,
             	'messages' => array(
@@ -103,7 +103,7 @@ if ($type == 'join' || $command == 'MENU') {
         )
     );
 }
-if ($command == 'HALO' || $command == 'HAI' || $command == 'HALO,' || $command == 'HAI,' ||$command == 'SELAMAT') {
+if ($command == 'HALO' || $command == 'HAI' || $command == 'HALO,' || $command == 'HAI,' ||$command == 'SELAMAT'||$command == 'PAGI'||$command == 'SIANG'||$command == 'SORE'||$command == 'MALAM'||$command == 'MET') {
     $aray = ["Halo kakak.. Apa Kabar","Selamat Pagi.. Ayo Semangat","Hai Kakak, Gimana Kabarnya","Halo.. Halo.. Halo.."];
     shuffle($aray);
     $text = array_shift($aray);
